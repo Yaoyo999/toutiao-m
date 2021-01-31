@@ -1,11 +1,8 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <h3>黑马头条</h3>
-    </div>
     <!-- 路由的出口 -->
-    <router-view/>
-  </div>
+      <router-view/>
+    </div>
 </template>
 
 <script>

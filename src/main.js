@@ -3,8 +3,19 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
-// 加载全局样式文件
+// 加载Vant组件库
+import Vant from 'vant'
+
+// 加载Vant组件库样式
+import 'vant/lib/index.css'
+
+// 加载全局样式文件(最好放到最后，方便覆盖第三方样式)
 import './styles/index.less'
+
+// 自动设置rem基准值(html字体大小)
+import 'amfe-flexible'
+// 全局注册Vant中的
+Vue.use(Vant)
 
 // 配置生产环境提示
 Vue.config.productionTip = false
