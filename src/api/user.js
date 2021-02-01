@@ -10,3 +10,14 @@ export const login = data => {
         data
     })
 }
+
+// 获取用户信息
+export const getCurrentUserInfo = () => {
+    return request({
+        method:'GET',
+        url:'/app/v1_0/user'
+        // headers: { 
+        //     Authorization: `Bearer ${store.state.user.token}`
+        // }
+    })
+}

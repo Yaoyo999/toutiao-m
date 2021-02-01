@@ -99,6 +99,7 @@ export default {
         Toast.success('登录成功');
         // 将后端返回数据存储在vuex中
         this.$store.commit('setUser',data.data)
+        this.$router.back()
          console.log(data);
     } catch (error) {
       Toast.fail('登录失败');
@@ -127,7 +128,7 @@ export default {
      const result = await SendSms(this.user.mobile)
     //  短信发送出去了，隐藏发送按钮，显示倒计时
      this.isCountDownShow = true
-     console.log(result);
+    //  console.log(result);
     //  短信发送出去了，显示倒计时
     } catch (err) {
       // try里面任何代码的错误都会进入catch,不同的错误需要有不同的提示那就需要判断了

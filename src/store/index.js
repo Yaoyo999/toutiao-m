@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import { getItem,setItem } from '../utils/storage'
+import { getItem,setItem ,removeItem} from '../utils/storage'
 
 Vue.use(Vuex)
 const USER_KEY = 'toutiao-user'
@@ -15,6 +15,10 @@ export default new Vuex.Store({
       // 为了防止刷新页面数据丢失，我们还需要把数据放到本地存储中，这里仅仅是为了持久化和得到数据
       // window.localStorage.setItem('user',JSON.stringify(state.user))
       setItem(USER_KEY,state.user)
+    },
+    removeUser(state,data) {
+      removeItem(data)
+      state.user = null
     }
   },
   actions: {
@@ -22,3 +26,4 @@ export default new Vuex.Store({
   modules: {
   }
 })
+

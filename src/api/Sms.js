@@ -4,7 +4,7 @@ import request from '../utils/request'
 export const SendSms = data => {
     return request({
         method:'GET',
-        url:`/app/v1_0/sms/codes/ss${data}`,
+        url:`/app/v1_0/sms/codes/${data}`,
         data
     })
 }
