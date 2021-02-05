@@ -8,6 +8,7 @@
         class="search-btn"
         round
         size="small"
+        to="/search"
         >搜索</van-button
       >
     </van-nav-bar>
@@ -65,7 +66,7 @@ export default {
     return {
       active: 0,
       channels: [],
-      isShowChannelEdit: true, // 是否显示弹出层
+      isShowChannelEdit: false, // 是否显示弹出层
     };
   },
   created() {
