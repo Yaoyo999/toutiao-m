@@ -17,14 +17,18 @@
         <!-- 搜索联想建议 -->
         <SearchSuggettion v-else-if="searchText" :searchText="searchText" @search="onSearch"/>
         <!-- 搜索历史记录 -->
-        <SearchHistory  v-else :searchHistories="searchHistories"/>
+        <SearchHistory  
+        v-else 
+        :searchHistories="searchHistories" 
+        @search="onSearch"
+        @delete-histories="searchHistories = $event"/>
     </div>
 </template>
 <script>
 import SearchSuggettion from './components/search-suggesttion'
 import SearchHistory from './components/search-history'
 import SearchResult from './components/search-result'
-import { getSearchHistories } from '../../api/search'
+// import { getSearchHistories } from '../../api/search'
 import { setItem, getItem } from '../../utils/storage'
 import { mapState } from 'vuex'
 export default {
@@ -54,7 +58,12 @@ computed: {
     ...mapState(['user'])
 },
  
-watch: {},
+watch: {
+    // 统一监视历史记录的变化，存储到本地存储
+    searchHistories () {
+        setItem('search-histories',this.searchHistories)
+    }
+},
  
 methods: {
     // 默认会有一个参数，输入框的值，用一个变量来接受
@@ -68,7 +77,7 @@ methods: {
         }
         this.searchHistories.unshift(searchText)
         // 将搜索的历史纪录存储在本地
-        setItem('search-histories',this.searchHistories)
+        // setItem('search-histories',this.searchHistories)
         // 显示搜索结果
         this.isShowResult = true
     },
@@ -76,11 +85,11 @@ methods: {
     async loadSearchHistories () {
         let searchHistories = getItem('search-histories') || []
         //   console.log(searchHistories);  
-            if (this.user) {
-                const { data } = await getSearchHistories()
-                // console.log(data);
-                searchHistories = [...new Set([...searchHistories,...data.data.keywords])];
-            }
+            // if (this.user) {
+            //     const { data } = await getSearchHistories()
+            //     // console.log(data);
+            //     searchHistories = [...new Set([...searchHistories,...data.data.keywords])];
+            // }
         return this.searchHistories = searchHistories
     }
    
