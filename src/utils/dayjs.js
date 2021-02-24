@@ -18,6 +18,10 @@ Vue.filter('relativeTime',val => {
     return dayjs().to(dayjs(val))
 })
 
+Vue.filter('date-time',(val,format='YYYY-MM-DD HH:mm:ss') => {
+    return dayjs(val).format(format)
+})
+
 // 日期格式化
 // console.log(dayjs().format('YYYY-MM-DD HH:MM:ss'));
 
