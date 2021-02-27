@@ -67,7 +67,7 @@
 
 <van-cell-group class="mb-4">
   <van-cell title="消息通知" is-link />
-  <van-cell title="小智同学" is-link />
+  <van-cell title="小智同学" is-link to="/user/chat" />
 </van-cell-group>
   <van-cell 
   v-if="user" 
